@@ -1,0 +1,171 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://scripts/lobby/connect_pannel.gd" type="Script" id=1]
+[ext_resource path="res://scripts/lobby/lobby_pannel.gd" type="Script" id=2]
+
+[node name="lobby" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="connect_pannel" type="Panel" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+
+[node name="labelName" type="Label" parent="connect_pannel"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -136.5
+margin_top = -54.0
+margin_right = -81.5
+margin_bottom = -39.0
+text = "Pseudo :"
+
+[node name="name" type="LineEdit" parent="connect_pannel"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -74.5
+margin_top = -60.0
+margin_right = 74.5
+margin_bottom = -40.0
+text = "Fidji"
+align = 1
+
+[node name="ipLabel" type="Label" parent="connect_pannel"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -155.7
+margin_top = -24.1
+margin_right = -80.7
+margin_bottom = -10.1
+text = "Ip address :"
+
+[node name="ip" type="LineEdit" parent="connect_pannel"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -74.5
+margin_top = -30.0
+margin_right = 74.5
+margin_bottom = -10.0
+text = "127.0.0.1"
+align = 1
+
+[node name="host" type="Button" parent="connect_pannel"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -103.0
+margin_top = 1.0
+margin_right = -17.0
+margin_bottom = 21.0
+text = "Host server"
+
+[node name="join" type="Button" parent="connect_pannel"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 5.0
+margin_top = 1.0
+margin_right = 91.0
+margin_bottom = 21.0
+text = "Join server"
+
+[node name="error" type="Label" parent="connect_pannel"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -100.0
+margin_top = 28.0
+margin_right = 100.0
+margin_bottom = 42.0
+custom_colors/font_color = Color( 1, 0, 0, 1 )
+align = 1
+
+[node name="fullscreen" type="CheckBox" parent="connect_pannel"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -48.0
+margin_top = 30.0
+margin_right = 50.0
+margin_bottom = 54.0
+text = "Fullscreen"
+
+[node name="lobby_pannel" type="Panel" parent="."]
+editor/display_folded = true
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 2 )
+
+[node name="playerList" type="ItemList" parent="lobby_pannel"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -100.0
+margin_top = -150.0
+margin_right = 100.0
+margin_bottom = 150.0
+
+[node name="StartGame" type="Button" parent="lobby_pannel"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -100.0
+margin_top = 155.0
+margin_right = 100.0
+margin_bottom = 10.0
+text = "Start Game"
+
+[node name="mapPreview" type="TextureRect" parent="lobby_pannel"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 150.0
+margin_top = -150.0
+margin_right = 300.0
+
+[node name="playerNumber" type="RichTextLabel" parent="lobby_pannel"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -100.0
+margin_top = -170.0
+margin_right = 6.0
+margin_bottom = -153.0
+bbcode_enabled = true
+bbcode_text = "Players: 0/[color=#ff0000]0[/color]"
+text = "Players: 0/0"
+
+[node name="connectionBlock" type="CheckButton" parent="lobby_pannel"]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 108.0
+margin_right = 349.0
+margin_bottom = 40.0
+text = "Block connections"
+
+[connection signal="pressed" from="connect_pannel/host" to="connect_pannel" method="_on_host_pressed"]
+[connection signal="pressed" from="connect_pannel/join" to="connect_pannel" method="_on_join_pressed"]
+[connection signal="pressed" from="connect_pannel/fullscreen" to="connect_pannel" method="_on_fullscreen_pressed"]
+[connection signal="pressed" from="lobby_pannel/StartGame" to="lobby_pannel" method="_on_StartGame_pressed"]
+[connection signal="pressed" from="lobby_pannel/connectionBlock" to="lobby_pannel" method="_on_CheckButton_pressed"]
